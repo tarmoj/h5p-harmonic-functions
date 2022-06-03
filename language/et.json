@@ -1,0 +1,17 @@
+{
+  "semantics": [
+    {
+    "label": "Funktsioonid",
+    "description": "Sisetage funktsioonid. Nt. TDTT"
+  },
+  
+  {
+  "label": "Helifail"
+},
+  
+  {
+  "label": "Notatsioon",
+  "description": "Notatsioonifail pildina (png or jpg)"
+} 
+  ]
+}

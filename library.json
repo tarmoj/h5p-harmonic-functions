@@ -1,0 +1,24 @@
+{
+  "title": "Harmonic Functions",
+  "description": "Recognize harmonic functions (T, D, S, M) in the music",
+  "majorVersion": 1,
+  "minorVersion": 0,
+  "patchVersion": 2,
+  "runnable": 1, 
+  "author": "Tarmo Johannes",
+  "license": "MIT",
+  "machineName": "H5P.HarmonicFunctions",
+  "embedTypes": [
+    "iframe"
+  ],
+  "preloadedJs": [
+    {
+      "path": "harmonicFunctions.js"
+    }
+  ],
+  "preloadedCss": [
+    {
+      "path": "harmonicFunctions.css"
+    }
+  ]
+}

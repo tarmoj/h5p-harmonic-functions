@@ -1,0 +1,128 @@
+[
+
+  {
+    "name": "funtions",
+    "type": "list",
+    "label": "Functions by measures",
+    "description": "Enter functions ( T, S, D or M) by measures. One bar may have several functions like TD. Upper/lower case does not matter.",
+    "entity": "Function(s)",
+    "widget": "verticalTabs",
+    "min": 1,
+    "max": 32,
+    "field": {
+      "label": "Functions",
+      "name": "functionCell",
+      "type": "text"
+    }
+  },
+
+
+
+  {
+    "name": "audioFile",
+    "type": "audio",
+    "label": "Audio file"
+  },
+
+  {
+    "name": "notationImage",
+    "type": "image",
+    "label": "Notation",
+    "optional": true,
+    "description": "Notation (png or jpg)"
+  },
+
+  {
+    "name": "l10n",
+    "type": "group",
+    "label": "UI labels",
+    "importance": "low",
+    "common": true,
+    "fields": [
+      {
+        "name": "explanation",
+        "type": "text",
+        "default": "You will hear first the tonic note and then a short melody of 7 notes. Enter the degrees as numbers 1..7"
+      },
+      {
+        "name": "instrument",
+        "type": "text",
+        "default": "Instrument"
+      },
+      {
+        "name": "flute",
+        "type": "text",
+        "default": "Flute"
+      },
+      {
+        "name": "oboe",
+        "type": "text",
+        "label": "Oboe",
+        "importance": "low",
+        "default": "Oboe"
+      },
+      {
+        "name": "guitar",
+        "type": "text",
+        "default": "Guitar"
+      },
+      {
+        "name": "violin",
+        "type": "text",
+        "default": "Violin"
+      },
+      {
+        "name": "play",
+        "type": "text",
+        "default": "Play"
+      },
+      {
+        "name": "stop",
+        "type": "text",
+        "default": "Stop"
+      },
+      {
+        "name": "check",
+        "type": "text",
+        "default": "Check"
+      },
+      {
+        "name": "enterDegrees",
+        "type": "text",
+        "default": "Enter degrees"
+      },
+      {
+        "name": "correct",
+        "type": "text",
+        "default": "Correct"
+      },
+      {
+        "name": "wrong",
+        "type": "text",
+        "default": "Wrong"
+      },
+      {
+        "name": "correctDegreesAre",
+        "type": "text",
+        "default": "Correct degrees are:"
+      },
+      {
+        "name": "clear",
+        "type": "text",
+        "default": "Clear"
+      },
+      {
+        "name": "volume",
+        "type": "text",
+        "default": "Volume"
+      },
+      {
+        "name": "mode",
+        "type": "text",
+        "default": "Mode (scale)"
+      }
+
+    ]
+  }
+
+]

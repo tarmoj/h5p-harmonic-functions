@@ -1,0 +1,31 @@
+
+HarmonicFunctions:
+
+semantics
+- Taktid kui list semantic.js - igas taktis võib olla 1 või 2 funktsiooni -  kuidas kontrollida? Kas vaja eraldi Editori?
+ei, vast harjutuse huures annab veateate, kui valesti sisestatud.
+
+
+UI
+
+- sisestuseks: nii palju kaste, kui on takte. Igasse takti võib sisestada n funktsiooni. Kui sisestatud, mine jägmise peale
+function: this.inputCells createInputCells => array( $inpt
+
+- kontrolli iframe resize
+
+
+- pildi suurus (iframe resize)
+
+
+- css
+* koeerisin vanast
+* image, inputCell etc
+
+-----
+
+pack (from parent directory)
+ h5p pack H5P.DegreeDictations DegreeDictations.h5p
+
+language file:
+library kataloogis:
+h5p create-language-file ./  et
