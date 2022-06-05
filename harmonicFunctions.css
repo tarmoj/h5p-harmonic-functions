@@ -21,7 +21,7 @@
   line-height: 2.2em;
 }
 
-.h5p-harmonic-functions .button, .select, .textField, .degreeCell {
+.h5p-harmonic-functions .button, .select, .textField, .inputCell {
   /*font-family: arial;*/
   color: var(--primary-text-color) !important;
   box-shadow: 3px 3px 3px var(--dark-primary-color);
@@ -63,8 +63,8 @@
   font-weight: bold;
 }
 
-.h5p-harmonic-functions .degreeCell {
-  width: 1.2em;
+.h5p-harmonic-functions .inputCell {
+  width: 2.2em;
   background: var(--surface-color);
 }
 

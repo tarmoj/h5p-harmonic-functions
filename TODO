@@ -11,6 +11,8 @@ UI
 - sisestuseks: nii palju kaste, kui on takte. Igasse takti võib sisestada n funktsiooni. Kui sisestatud, mine jägmise peale
 function: this.inputCells createInputCells => array( $inpt
 
+- mõtle, kas sisendkastid takti kaupa ja kuidas märku anda, et mõnes taktis mitu funktsiooni?
+
 - kontrolli iframe resize
 
 

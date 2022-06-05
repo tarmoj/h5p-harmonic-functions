@@ -1,16 +1,15 @@
 [
 
   {
-    "name": "funtions",
+    "name": "functions",
     "type": "list",
     "label": "Functions by measures",
     "description": "Enter functions ( T, S, D or M) by measures. One bar may have several functions like TD. Upper/lower case does not matter.",
     "entity": "Function(s)",
-    "widget": "verticalTabs",
     "min": 1,
     "max": 32,
     "field": {
-      "label": "Functions",
+      "label": "Function(s)",
       "name": "functionCell",
       "type": "text"
     }
@@ -119,7 +118,7 @@
       {
         "name": "mode",
         "type": "text",
-        "default": "Mode (scale)"
+        "default": "Muutsin"
       }
 
     ]
