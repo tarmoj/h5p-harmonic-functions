@@ -18,6 +18,8 @@ function: this.inputCells createInputCells => array( $inpt
 
 - pildi suurus (iframe resize)
 
+Tõlked
+
 
 - css
 * koeerisin vanast
