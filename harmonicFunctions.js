@@ -99,6 +99,8 @@ H5P.HarmonicFunctions = (function ($) {
 			//$("#feedbackDiv").show();
 			//document.getElementById("feedbackDiv").innerHTML = feedBack;
 			//document.getElementById("notationImage").style.visibility = "visible";
+            $("#notationImage").show();
+            this.trigger("resize");
 		}
 
 	}
@@ -124,35 +126,14 @@ H5P.HarmonicFunctions = (function ($) {
 		if (self.options.audioFile.length>0) {
             
             
-// 			$container.append($('<button/>', {
-// 					text: "MÄNGI", //set text 1 to 10
-// 					id: 'startButton',
-// 					click: function () { document.getElementById("audioPlayer").play();   }
-// 
-// 				}
-// 			));
-// 
-// 			$container.append($('<button/>', {
-// 					text: "STOP", //set text 1 to 10
-// 					id: 'stopButton',
-// 					click: function () {
-// 						console.log("Stop");
-// 						$("#audioPlayer").pause();  //$(...).pause is not a function
-// 						const audioPlayer = document.getElementById("audioPlayer");
-// 						audioPlayer.pause();
-// 						audioPlayer.currentTime = 0;
-// 
-// 					}
-// 
-// 				}
-// 			));
+            // there were  Play/Stop buttons before, no need, use audio element for playback
 
 			// TODO: create audio element with jQuery? Is it easier?
 			const relativeAudioFilePath = self.options.audioFile[0].path;
 			console.log("Create audio for: ", relativeAudioFilePath);
 			const audio= document.createElement('AUDIO');
 			audio.setAttribute("id", "audioPlayer");
-			audio.setAttribute('controls', false);
+			audio.setAttribute('controls', true);
 			const source = document.createElement('source');
 			source.src = H5P.getPath(relativeAudioFilePath,self.id)
 			audio.appendChild(source);
@@ -177,9 +158,21 @@ H5P.HarmonicFunctions = (function ($) {
 
 			// Add image if provided.
 			// TODO: use jQuery hide/show perhaps
+            // TODO: get parent width f
 			if (this.options.notationImage) {
-				console.log("Image: ", H5P.getPath(this.options.notationImage.path, this.id));
-				$container.append('<img id="notationImage" width="200" style="visibility:hidden" src="' + H5P.getPath(this.options.notationImage.path, this.id) + '">');
+                const imagePath = H5P.getPath(this.options.notationImage.path, this.id);
+				console.log("Image: ", imagePath);
+                const $image = $('<img>', {
+                    id: "notationImage",
+                    class: "image",
+                    alt: "notation image",
+                    src: imagePath,
+                    //width: "90%",
+                    //load: () => self.trigger('resize')// to resize iframe // does not make sense, since hidden first
+                    
+                }).hide();
+                $container.append($image);
+// 				$container.append('<img id="notationImage" width="200" style="visibility:hidden" src="' + H5P.getPath(this.options.notationImage.path, this.id) + '">');
 			}
 
 

@@ -169,3 +169,12 @@
   background: var(--light-primary-color);
 }
 
+.h5p-harmonic-functions .image { 
+    padding: 0.5em;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+    box-shadow: 3px 3px 3px var(--dark-primary-color);
+}
+
