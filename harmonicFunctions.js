@@ -89,6 +89,7 @@ H5P.HarmonicFunctions = (function ($) {
 				} else {
 					feedBack = "Vale!";
 					correct = false;
+                    this.inputCells[i].val(this.inputCells[i].val() + "|" + this.functions[i]);
 					this.inputCells[i].addClass("redBorder");
 				}
 			}

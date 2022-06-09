@@ -9,18 +9,22 @@ ei, vast harjutuse huures annab veateate, kui valesti sisestatud.
 UI
 
 - sisestuseks: nii palju kaste, kui on takte. Igasse takti võib sisestada n funktsiooni. Kui sisestatud, mine jägmise peale
-function: this.inputCells createInputCells => array( $inpt
+function: this.inputCells createInputCells => array( $inpt OK
 
-- mõtle, kas sisendkastid takti kaupa ja kuidas märku anda, et mõnes taktis mitu funktsiooni? (vt AskFunctions)
+- mõtle, kas sisendkastid takti kaupa ja kuidas märku anda, et mõnes taktis mitu funktsiooni? (vt AskFunctions) OK
 
-- kontrolli iframe resize
+- kontrolli iframe resize OK
 
 
-- pildi suurus (iframe resize)
+- pildi suurus (iframe resize) OK
+
+- boxShadow class, audioelemendile
+
+
 
 Tõlked
 
-Kuidas teha tagasiside (kui vale, siis näita, mis oli õige? Vt orig
+Kuidas teha tagasiside (kui vale, siis näita, mis oli õige? - vbolla: kui vale, lisa inputCell sisse
 
 
 - css
