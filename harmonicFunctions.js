@@ -13,10 +13,21 @@ H5P.HarmonicFunctions = (function ($) {
 
 		// options: {functions , audioFile, notationImage} kirj
 		// functions comes as a list of strings -  functins by measures. One measure can contain several functions like ["T", "SD", "T"]
-
+        
+        this.l10n = $.extend(true, {}, {
+            "explanation": "Enter the harmonic functions of the musical excerpt -  T, S, D or M (tonic, subdominant, dominant or mediant)",
+            "check": "Check",
+            "enterFunctions": "Enter functions",
+            "correct": "Correct",
+            "wrong": "Wrong",
+            "couldNotCreateAudioElement": "Could not create Audio element"
+        }, options.l10n);
+        
+        
+        
 		this.options = options;
 		this.functions = options.functions;
-		console.log("Options", this.options);
+		console.log("Transaltions", this.l10n);
 		// Keep provided id.
 		this.id = id;
 
@@ -84,10 +95,10 @@ H5P.HarmonicFunctions = (function ($) {
 				const response = this.inputCells[i].val().toLocaleLowerCase();
 				console.log("response: ", i, this.inputCells[i].val() );
 				if (this.functions[i].toLocaleLowerCase() === response) {
-					feedBack = "Õige!";
+					feedBack = this.l10n.correct;
 					this.inputCells[i].addClass("greenBorder");
 				} else {
-					feedBack = "Vale!";
+					feedBack = this.l10n.wrong;
 					correct = false;
                     this.inputCells[i].val(this.inputCells[i].val() + "|" + this.functions[i]);
 					this.inputCells[i].addClass("redBorder");
@@ -97,9 +108,6 @@ H5P.HarmonicFunctions = (function ($) {
 
 			console.log(feedBack);
 			$("#feedbackDiv").html(feedBack).show();
-			//$("#feedbackDiv").show();
-			//document.getElementById("feedbackDiv").innerHTML = feedBack;
-			//document.getElementById("notationImage").style.visibility = "visible";
             $("#notationImage").show();
             this.trigger("resize");
 		}
@@ -120,7 +128,7 @@ H5P.HarmonicFunctions = (function ($) {
 		// container.  Allows for styling later.
 		$container.addClass("h5p-harmonic-functions");
 
-		$container.append('<div>Explanation</div>');
+		$container.append($('<div>').text(this.l10n.explanation ));
 
 
 		//audio
@@ -142,24 +150,21 @@ H5P.HarmonicFunctions = (function ($) {
 
 			$container.append( [
                 '<br>',    
-				$('<div>').text("Enter functions:"),
+				$('<div>').text(this.l10n.enterFunctions),
 				self.createInputCells(),
 				$('<button/>', {
-					text: "KONTROLLI",
+					text: this.l10n.check,
 					id: 'checkButton',
                     class: 'button',
 					click:  ()  => {
-						console.log("Check", self.options);
 						self.checkResponse();
 					}
 				}),
-                '<div />'
+                '<br />'
 			] );
 
 
 			// Add image if provided.
-			// TODO: use jQuery hide/show perhaps
-            // TODO: get parent width f
 			if (this.options.notationImage) {
                 const imagePath = H5P.getPath(this.options.notationImage.path, this.id);
 				console.log("Image: ", imagePath);
@@ -167,13 +172,9 @@ H5P.HarmonicFunctions = (function ($) {
                     id: "notationImage",
                     class: "image",
                     alt: "notation image",
-                    src: imagePath,
-                    //width: "90%",
-                    //load: () => self.trigger('resize')// to resize iframe // does not make sense, since hidden first
-                    
+                    src: imagePath,   
                 }).hide();
                 $container.append($image);
-// 				$container.append('<img id="notationImage" width="200" style="visibility:hidden" src="' + H5P.getPath(this.options.notationImage.path, this.id) + '">');
 			}
 
 
@@ -181,9 +182,8 @@ H5P.HarmonicFunctions = (function ($) {
 
 
 		} else {
-			$container.append('<div>Could not create audio element</div>');
+			$container.append($('<div>').text(this.l10n.couldNotCreateAudioElement) );
 		}
-
 
 	};
 

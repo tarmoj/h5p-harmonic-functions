@@ -41,54 +41,18 @@
       {
         "name": "explanation",
         "type": "text",
-        "default": "You will hear first the tonic note and then a short melody of 7 notes. Enter the degrees as numbers 1..7"
+        "default": "Enter the harmonic functions of the musical excerpt -  T, S, D or M (tonic, subdominant, dominant or mediant)"
       },
-      {
-        "name": "instrument",
-        "type": "text",
-        "default": "Instrument"
-      },
-      {
-        "name": "flute",
-        "type": "text",
-        "default": "Flute"
-      },
-      {
-        "name": "oboe",
-        "type": "text",
-        "label": "Oboe",
-        "importance": "low",
-        "default": "Oboe"
-      },
-      {
-        "name": "guitar",
-        "type": "text",
-        "default": "Guitar"
-      },
-      {
-        "name": "violin",
-        "type": "text",
-        "default": "Violin"
-      },
-      {
-        "name": "play",
-        "type": "text",
-        "default": "Play"
-      },
-      {
-        "name": "stop",
-        "type": "text",
-        "default": "Stop"
-      },
+      
       {
         "name": "check",
         "type": "text",
         "default": "Check"
       },
       {
-        "name": "enterDegrees",
+        "name": "enterFunctions",
         "type": "text",
-        "default": "Enter degrees"
+        "default": "Enter functions"
       },
       {
         "name": "correct",
@@ -101,26 +65,12 @@
         "default": "Wrong"
       },
       {
-        "name": "correctDegreesAre",
+        "name": "couldNotCreateAudioElement",
         "type": "text",
-        "default": "Correct degrees are:"
-      },
-      {
-        "name": "clear",
-        "type": "text",
-        "default": "Clear"
-      },
-      {
-        "name": "volume",
-        "type": "text",
-        "default": "Volume"
-      },
-      {
-        "name": "mode",
-        "type": "text",
-        "default": "Muutsin"
+        "default": "Could not create audio element"
       }
-
+      
+      
     ]
   }
 
