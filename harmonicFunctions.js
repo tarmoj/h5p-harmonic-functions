@@ -23,11 +23,13 @@ H5P.HarmonicFunctions = (function ($) {
             "couldNotCreateAudioElement": "Could not create Audio element"
         }, options.l10n);
         
+        this.l10n = options.l10n;
+        
         
         
 		this.options = options;
 		this.functions = options.functions;
-		console.log("Transaltions", this.l10n);
+		console.log("Transaltions", options.l10n);
 		// Keep provided id.
 		this.id = id;
 

@@ -5,7 +5,7 @@
     "type": "list",
     "label": "Functions by measures",
     "description": "Enter functions ( T, S, D or M) by measures. One bar may have several functions like TD. Upper/lower case does not matter.",
-    "entity": "Function(s)",
+    "entity": "Measure",
     "min": 1,
     "max": 32,
     "field": {

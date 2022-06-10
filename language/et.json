@@ -3,7 +3,7 @@
     {
       "label": "Funktsioonid taktide kaupa",
       "description": "Sisetage harmoonilised funktsioonud ( T, S, D või M) takti kaupa. Ühes taktis võib olla ka mitu funktsiooni, siestage need järjest või tühikuga eraldaded nagu nt TD või T D.",
-      "entity": "Funktsioonid",
+      "entity": "takt",
       "field": {
         "label": "Funktsioon(id)"
       }
