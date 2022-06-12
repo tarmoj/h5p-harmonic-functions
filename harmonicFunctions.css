@@ -30,6 +30,11 @@
   background: var(--light-primary-color);
 }
 
+
+.h5p-harmonic-functions .shadow {
+  box-shadow: 3px 3px 3px var(--dark-primary-color);
+}
+
 .h5p-harmonic-functions .select {
   display: inline-block;
   cursor: pointer;
@@ -176,5 +181,10 @@
     margin-right: auto;
     width: 90%;
     box-shadow: 3px 3px 3px var(--dark-primary-color);
+}
+
+.h5p-harmonic-functions .vertical-center {
+  display: flex;
+  align-items: center;
 }
 

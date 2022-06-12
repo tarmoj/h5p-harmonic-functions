@@ -1,34 +1,54 @@
 [
-
   {
-    "name": "functions",
+
+    "name": "exercises",
     "type": "list",
-    "label": "Functions by measures",
-    "description": "Enter functions ( T, S, D or M) by measures. One bar may have several functions like TD. Upper/lower case does not matter.",
-    "entity": "Measure",
+    "label": "Harmonic function exercises",
+    "description": "Define harmonic function exercises (max 100)",
+    "entity": "Exercise",
     "min": 1,
-    "max": 32,
+    "max": 100,
+
     "field": {
-      "label": "Function(s)",
-      "name": "functionCell",
-      "type": "text"
+      "name": "harmonicFunctionsField",
+      "type": "group",
+      "label": "Exercise data",
+      "fields": [
+        {
+          "name": "title",
+          "type": "text",
+          "label": "(Sub)title of the exercise",
+          "description": "(Sub)title of the exercise shown in dropdown menu"
+        },
+        {
+          "name": "functions",
+          "type": "list",
+          "label": "Functions by measures",
+          "description": "Enter functions ( T, S, D or M) by measures. One bar may have several functions like TD. Upper/lower case does not matter.",
+          "entity": "Measure",
+          "min": 2,
+          "max": 32,
+          "field": {
+            "label": "Function(s)",
+            "name": "functionCell",
+            "type": "text"
+          }
+        },
+        {
+          "name": "audioFile",
+          "type": "audio",
+          "label": "Audio file"
+        },
+        {
+          "name": "notationImage",
+          "type": "image",
+          "label": "Notation",
+          "optional": true,
+          "description": "Notation (png or jpg)"
+        }
+      ]
     }
-  },
 
-
-
-  {
-    "name": "audioFile",
-    "type": "audio",
-    "label": "Audio file"
-  },
-
-  {
-    "name": "notationImage",
-    "type": "image",
-    "label": "Notation",
-    "optional": true,
-    "description": "Notation (png or jpg)"
   },
 
   {
@@ -43,7 +63,7 @@
         "type": "text",
         "default": "Enter the harmonic functions of the musical excerpt -  T, S, D or M (tonic, subdominant, dominant or mediant)"
       },
-      
+
       {
         "name": "check",
         "type": "text",
@@ -69,8 +89,6 @@
         "type": "text",
         "default": "Could not create audio element"
       }
-      
-      
     ]
   }
 
