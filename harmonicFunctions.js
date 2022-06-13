@@ -37,15 +37,11 @@ H5P.HarmonicFunctions = (function ($) {
         }, options.l10n);
         
         //this.l10n = options.l10n;
-        
-        
-        
-
 
 		this.responded = false;
-		this.feedBack = "";
 
 		this.inputCells = [];
+
 
 		// methods  ---------------
 
@@ -62,8 +58,9 @@ H5P.HarmonicFunctions = (function ($) {
 			// create new inputCells
 			$("#cellContainer").html( this.createInputCells() );
 
-			// set andwered to false
+			// set andwered to false and clear feedback
 			this.responded = false;
+			$("#feedbackDiv").html("");
 
 			// audio
 			const audioFile = this.exercises[index].audioFile;
@@ -83,7 +80,6 @@ H5P.HarmonicFunctions = (function ($) {
 				$("#notationImage").attr("src", imagePath).hide();
 				$("#notationImage").trigger("load");
 			}
-
 		}
 
 
@@ -91,7 +87,7 @@ H5P.HarmonicFunctions = (function ($) {
 
 			console.log("createInputCells", this);
 
-			this.inputCells = []; // clear -  not sure if it
+			this.inputCells = []; // clear
 
 			const functions = this.exercises[this.exerciseIndex].functions;
 
@@ -101,14 +97,12 @@ H5P.HarmonicFunctions = (function ($) {
 				const $inputCell = $('<input>', {
 					id: "inputCell" + i + 1,
 					class: "inputCell",
-					// TODO: aria-label, jump to next cell?
                     attr: {index: i, 'aria-label': "function "+(i+1).toString() },
                     keyup: (event) => {
                         const index = parseInt(event.target.getAttribute("index"));
                         const input = event.target.value;
                         const functionCount = functions.length;
                         console.log("InputCell, key, index, input", event.key, index, input, /[t,s,d,m,T,S,D,M]/.test(event.key) );
-                        let result = true;
                         let move = 0;
 
                         if ( ["t","s","d","m"].includes(event.key.toLowerCase()) && index<functionCount-1 ) { // if a function key, move to next
@@ -124,18 +118,18 @@ H5P.HarmonicFunctions = (function ($) {
                         }
 
                         if (event.key==='Enter') {
-                            console.log("Enter");
+                            //console.log("Enter");
                             this.checkResponse();
                         }
                     }
                 });
                 
-				console.log("createInputCells: ", functions[i], $inputCell);
+				//console.log("createInputCells: ", functions[i], $inputCell);
 				this.inputCells[i] = $inputCell;
 				$inputDiv.append($inputCell);
 			}
 
-			console.log("inputDiv: ", $inputDiv);
+			//console.log("inputDiv: ", $inputDiv);
 
 			return $inputDiv;
 
@@ -165,7 +159,7 @@ H5P.HarmonicFunctions = (function ($) {
 					text: "<",
 					click: (event) => {
 						if (this.exerciseIndex>0) {
-							console.log("Back");
+							//console.log("Back");
 							$("#exerciseSelect")[0].selectedIndex=this.exerciseIndex-1;
 							$("#exerciseSelect").trigger("change");
 						}
@@ -179,21 +173,23 @@ H5P.HarmonicFunctions = (function ($) {
 					text: ">",
 					click: (event) => {
 						if (this.exerciseIndex<this.exercises.length-1) {
-							//this.exerciseIndex += 1;
-							console.log("Forward");
+							//console.log("Forward");
 							$("#exerciseSelect")[0].selectedIndex=this.exerciseIndex + 1;
 							$("#exerciseSelect").trigger("change");
 						}
 					}
 				}),
-			]); // append also buttons later
+			]);
 			return $menuDiv;
 		};
 
 
 		this.checkResponse = () => {
+			if (this.responded) { alert("You have already answered"); return; } // TODO: translation
+
 			this.responded = true;
 			let correct = true;
+			let feedBack = "";
 			const functions = this.exercises[this.exerciseIndex].functions;
 			for (let i=0; i<functions.length; i++) {
 				const response = this.inputCells[i].val().toLowerCase();
@@ -233,72 +229,56 @@ H5P.HarmonicFunctions = (function ($) {
 		// container.  Allows for styling later.
 		$container.addClass("h5p-harmonic-functions");
 
-		$container.append( this.createMenuRow );
+		$container.append( this.createMenuRow() );
 
 		$container.append($('<div>').text(this.l10n.explanation ));
 
-		const audioFile = this.exercises[this.exerciseIndex].audioFile;
+
+		// create elements here, fill with content with loadExercise() below
 
 		//audio
-		if (audioFile.length>0) {
+		$container.append( $('<audio>', {
+			id: "audioPlayer",
+			class: "shadow",
+			controls: true
+		}) );
 
-			// there were  Play/Stop buttons before, no need, use audio element for playback
+		$container.append( [
+			'<br>',
+			$('<div>').text(this.l10n.enterFunctions),
 
-			// TODO: create audio element with jQuery? Is it easier?
-			//tryout jQuery
-			const relativeAudioFilePath = audioFile[0].path;
-			const absolutePath = H5P.getPath(relativeAudioFilePath, self.id);
-			console.log("Create audio for: ", absolutePath);
+			$('<div>', {id: "cellContainer"}).html( self.createInputCells() ),
 
-
-			// jQuery method reported: <source> element has no “src” attribute. Media resource load failed.
-			const $audio = $('<audio>', {
-				id: "audioPlayer",
-				class: "shadow",
-				src: absolutePath,
-				controls: true
-			});
-			$container.append($audio);
-
-
-			$container.append( [
-				'<br>',
-				$('<div>').text(this.l10n.enterFunctions),
-
-				$('<div>', {id: "cellContainer"}).html( self.createInputCells() ),
-
-				$('<button/>', {
-					text: this.l10n.check,
-					id: 'checkButton',
-					class: 'button',
-					click:  ()  => {
-						self.checkResponse();
-					}
-				}),
-				'<br />'
-			] );
+			$('<button/>', {
+				text: this.l10n.check,
+				id: 'checkButton',
+				class: 'button',
+				click:  ()  => {
+					self.checkResponse();
+				}
+			}),
+			'<br />'
+		] );
 
 
-			// Add image if provided.
-			const notationImage = this.exercises[this.exerciseIndex].notationImage;
-			if (notationImage) {
-				const imagePath = H5P.getPath(notationImage.path, this.id);
-				console.log("Image: ", imagePath);
-				const $image = $('<img>', {
-					id: "notationImage",
-					class: "image",
-					alt: "notation image",
-					src: imagePath,
-				}).hide();
-				$container.append($image);
-			}
+		// Add image if provided.
+
+		const $image = $('<img>', {
+			id: "notationImage",
+			class: "image",
+			alt: "notation image",
+		}).hide();
+		$container.append($image);
 
 
-			$container.append('<div id="feedbackDiv"></div>');
 
+		$container.append('<div id="feedbackDiv"></div>');
 
+		const currentIndex =  $("#exerciseSelect")[0].selectedIndex; // not sure if this is necessary or works at all...
+		if (currentIndex>=0 ) {
+			this.loadExercise(currentIndex);
 		} else {
-			$container.append($('<div>').text(this.l10n.couldNotCreateAudioElement) );
+			this.loadExercise(0);
 		}
 
 	};
