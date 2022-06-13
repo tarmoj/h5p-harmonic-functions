@@ -72,11 +72,17 @@ H5P.HarmonicFunctions = (function ($) {
 			console.log("Create audio for: ", absolutePath);
 
 			$("#audioPlayer").attr("src", absolutePath);
-			$("#audioPlayer")[0].load(); // does not work
-			console.log("audio now:", $("#audioPlayer")[0]);
+			$("#audioPlayer")[0].load();
+			//console.log("audio now:", $("#audioPlayer")[0]);
 
-			// load new picture if present
-
+			// load new picture (notation) if present
+			const notationImage = this.exercises[index].notationImage;
+			if (notationImage) {
+				const imagePath = H5P.getPath(notationImage.path, this.id);
+				console.log("Image: ", imagePath);
+				$("#notationImage").attr("src", imagePath).hide();
+				$("#notationImage").trigger("load");
+			}
 
 		}
 
@@ -252,24 +258,7 @@ H5P.HarmonicFunctions = (function ($) {
 				src: absolutePath,
 				controls: true
 			});
-			// $audio.append('<source>', {
-			// 	id: "audioSource",
-			// 	attr: {"src": absolutePath}
-			// });
-			console.log("audio:", $audio[0] );
-
 			$container.append($audio);
-
-			// const audio= document.createElement('AUDIO');
-			// audio.setAttribute("id", "audioPlayer");
-			// audio.setAttribute('controls', true);
-			// audio.className = "shadow";
-			// const source = document.createElement('source');
-			// source.id = "audioSource";
-			// source.src = H5P.getPath(relativeAudioFilePath,self.id)
-			// audio.appendChild(source);
-			// $container.append(audio);
-
 
 
 			$container.append( [
