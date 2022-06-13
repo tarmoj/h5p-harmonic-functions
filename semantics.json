@@ -88,6 +88,11 @@
         "name": "couldNotCreateAudioElement",
         "type": "text",
         "default": "Could not create audio element"
+      },
+      {
+        "name": "selectDictation",
+        "type": "text",
+        "default": "Select dictation"
       }
     ]
   }
