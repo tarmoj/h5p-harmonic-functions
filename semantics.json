@@ -113,6 +113,11 @@
         "name": "next", 
         "type": "text",
         "default": "Next"
+      },
+      {
+        "name": "euSupportText", 
+        "type": "text",
+        "default": "The project is supported by European Social Fund"
       }
     ]
   }

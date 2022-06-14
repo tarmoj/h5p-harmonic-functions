@@ -34,7 +34,8 @@ H5P.HarmonicFunctions = (function ($) {
 			"correctAnswerIs": "Correct is: ",
 			"youHaveAnswered": "You have already answered",
 			"previous": "Previous",
-			"next": "Next"
+			"next": "Next",
+			"this.l10n.euSupportText": "The project is supported by European Social Fund"
         }, options.l10n);
         
         //this.l10n = options.l10n;
@@ -235,7 +236,7 @@ H5P.HarmonicFunctions = (function ($) {
 					feedBack = this.l10n.correct;
 					this.inputCells[i].addClass("greenBorder");
 				} else {
-					feedBack = this.l10n.wrong;
+					feedBack = this.l10n.wrong + "! ";
 					feedBack += this.l10n.correctAnswerIs + " " + functions.join(" ");
 					correct = false;
                     this.inputCells[i].val(this.inputCells[i].val() + "|" + functions[i]);
@@ -308,6 +309,23 @@ H5P.HarmonicFunctions = (function ($) {
 			alt: "notation image",
 		}).hide();
 		$container.append($image);
+
+
+		const euLogoPath = H5P.getLibraryPath(this.libraryInfo.versionedNameNoSpaces) + "/eu.jpg";
+		console.log("logo path:", euLogoPath);
+		const $euDiv = $('<div>', {id:"euDiv"}).html("<br /><small>" + this.l10n.euSupportText +  "</small>");
+		$euDiv.append(
+			$('<img>', {
+				id: "euLogo",
+				alt: "The project is supported by EU social Fund",
+				width: "200px",
+				align: "left",
+				src: euLogoPath
+			})
+		)
+
+		$container.append($euDiv);
+		H5P.trigger("resize");
 
 		const currentIndex =  $("#exerciseSelect")[0].selectedIndex; // not sure if this is necessary or works at all...
 		if (currentIndex>=0 ) {
