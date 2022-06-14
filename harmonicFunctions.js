@@ -8,7 +8,6 @@ H5P.HarmonicFunctions = (function ($) {
 	 */
 	function C(options, id) {
 		this.$ = $(this);
-        const self = this;
 		// Extend defaults with provided options
 
 		// options: {functions , audioFile, notationImage} kirj
@@ -24,8 +23,6 @@ H5P.HarmonicFunctions = (function ($) {
 
 		this.exerciseIndex = 0;
 
-		// TODO: create menu, set active exercise etc
-        
         this.l10n = $.extend(true, {}, {
             "explanation": "Enter the harmonic functions of the musical excerpt -  T, S, D or M (tonic, subdominant, dominant or mediant)",
             "check": "Check",
@@ -41,6 +38,7 @@ H5P.HarmonicFunctions = (function ($) {
 		this.responded = false;
 
 		this.inputCells = [];
+		this.functionArray = [];
 
 
 		// methods  ---------------
@@ -54,6 +52,7 @@ H5P.HarmonicFunctions = (function ($) {
 			}
 
 			this.exerciseIndex = index;
+			this.functionArray = this.getFunctionArray(index);
 
 			// create new inputCells
 			$("#cellContainer").html( this.createInputCells() );
@@ -82,51 +81,82 @@ H5P.HarmonicFunctions = (function ($) {
 			}
 		}
 
+		this.getFunctionArray = (index) => { // functions are given as array by bars, one bar may contain several functions. break into array of arrays (by bar, like [ ["T"], ["T","D"] ]
+			const functionBars = this.exercises[index].functions;
+			const functionArray = [];
+			for (let bar of functionBars) {
+				const barArray = [];
+				for (let i=0; i<bar.length; i++) { // iterate by letters, test if function, push to array
+					const f = bar[i].toUpperCase();
+					if (["T","S","D","M"].includes(f)) {
+						barArray.push(f);
+					}
+				}
+				functionArray.push(barArray);
+			}
+			console.log("FunctionArray: ", functionArray);
+			return functionArray;
+		}
 
 		this.createInputCells = () =>  {
 
 			console.log("createInputCells", this);
 
 			this.inputCells = []; // clear
+			const functionCount = this.functionArray.flat().length;
+			console.log("functions found:", functionCount);
 
-			const functions = this.exercises[this.exerciseIndex].functions;
+			//const functions = this.exercises[this.exerciseIndex].functions;
 
 			$inputDiv = $('<div>', {id: "inputDiv"});
 			// kas kasutada mingit tabelit ja reastada nt 4 takti ritta? või grid?
-			for (let i = 0; i < functions.length; i++) {
-				const $inputCell = $('<input>', {
-					id: "inputCell" + i + 1,
-					class: "inputCell",
-                    attr: {index: i, 'aria-label': "function "+(i+1).toString() },
-                    keyup: (event) => {
-                        const index = parseInt(event.target.getAttribute("index"));
-                        const input = event.target.value;
-                        const functionCount = functions.length;
-                        console.log("InputCell, key, index, input", event.key, index, input, /[t,s,d,m,T,S,D,M]/.test(event.key) );
-                        let move = 0;
+			// või lihtsalt 4 takti järel <br />
+			let barCounter = 0, i = 0;
+			for (let functionBar of this.functionArray) {
+				for (let j=0; j<functionBar.length; j++) {
+					const $inputCell = $('<input>', {
+						id: "inputCell" + i + 1,
+						class: "inputCell",
+						attr: {index: i, 'aria-label': "function " + (i + 1).toString()},
+						keyup: (event) => {
+							const index = parseInt(event.target.getAttribute("index"));
+							const input = event.target.value;
 
-                        if ( ["t","s","d","m"].includes(event.key.toLowerCase()) && index<functionCount-1 ) { // if a function key, move to next
-                           move = 1;
-                        } else if (event.key==="ArrowRight" && index<functionCount-1) {
-                            move = 1;
-                        } else if (event.key==="ArrowLeft" && index>0) {
-                            move = -1;
-                        }
+							//console.log("InputCell, key, index, input", event.key, index, input, /[t,s,d,m,T,S,D,M]/.test(event.key));
+							let move = 0;
 
-                        if (move!=0) {
-                            this.inputCells[index+move].focus();
-                        }
+							if (["t", "s", "d", "m"].includes(event.key.toLowerCase()) && index < functionCount - 1) { // if a function key, move to next
+								move = 1;
+							} else if (event.key === "ArrowRight" && index < functionCount - 1) {
+								move = 1;
+							} else if (event.key === "ArrowLeft" && index > 0) {
+								move = -1;
+							}
 
-                        if (event.key==='Enter') {
-                            //console.log("Enter");
-                            this.checkResponse();
-                        }
-                    }
-                });
-                
-				//console.log("createInputCells: ", functions[i], $inputCell);
-				this.inputCells[i] = $inputCell;
-				$inputDiv.append($inputCell);
+							if (move != 0) {
+								this.inputCells[index + move].focus();
+							}
+
+							if (event.key === 'Enter') {
+								//console.log("Enter");
+								this.checkResponse();
+							}
+						}
+					});
+
+					if (j===functionBar.length-1) { // if last bar in measure, add a bit bigger right margin, otherwise narrow
+						$inputCell.addClass("right-margin");
+					}
+
+					//console.log("createInputCells: ", functions[i], $inputCell);
+					this.inputCells[i] = $inputCell;
+					$inputDiv.append($inputCell);
+					i+=1;
+				}
+				barCounter += 1;
+				if (barCounter%4===0) {
+					$inputDiv.append("</br>");
+				}
 			}
 
 			//console.log("inputDiv: ", $inputDiv);
@@ -190,7 +220,7 @@ H5P.HarmonicFunctions = (function ($) {
 			this.responded = true;
 			let correct = true;
 			let feedBack = "";
-			const functions = this.exercises[this.exerciseIndex].functions;
+			const functions =  this.functionArray.flat(); //this.exercises[this.exerciseIndex].functions;
 			for (let i=0; i<functions.length; i++) {
 				const response = this.inputCells[i].val().toLowerCase();
 				console.log("response: ", i, this.inputCells[i].val() );
