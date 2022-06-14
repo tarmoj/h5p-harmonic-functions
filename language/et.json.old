@@ -1,0 +1,42 @@
+{
+  "semantics": [
+    {
+      "label": "Funktsioonid taktide kaupa",
+      "description": "Sisetage harmoonilised funktsioonud ( T, S, D või M) takti kaupa. Ühes taktis võib olla ka mitu funktsiooni, siestage need järjest või tühikuga eraldaded nagu nt TD või T D.",
+      "entity": "takt",
+      "field": {
+        "label": "Funktsioon(id)"
+      }
+    },
+    {
+      "label": "Audiofail"
+    },
+    {
+      "label": "Noot",
+      "description": "Soovi korral laadige üles notatsioon pildifailina (png või jpg)"
+    },
+    {
+      "label": "UI labels",
+      "fields": [
+        {
+          "default": "Sisetage muusikalise katke harmoonilised funktsioonid -  T, S, D või M (toonika, subdominant, dominant või mediant)"
+        },
+        {
+          "default": "Kontrolli"
+        },
+        {
+          "default": "Sisetage funktsioonid:"
+        },
+        {
+          "default": "Õige"
+        },
+        {
+          "default": "Vale"
+        },
+        {
+          "default": "Audio elemendi loomine ei õnnestunud."
+        }
+      ]
+    }
+  ]
+}

@@ -1,19 +1,33 @@
 {
   "semantics": [
     {
-      "label": "Funktsioonid taktide kaupa",
-      "description": "Sisetage harmoonilised funktsioonud ( T, S, D või M) takti kaupa. Ühes taktis võib olla ka mitu funktsiooni, siestage need järjest või tühikuga eraldaded nagu nt TD või T D.",
-      "entity": "takt",
+      "label": "Funktsiooniharjutused",
+      "description": "Defineerige funktsiooniharjutused (max 100)",
+      "entity": "Harjutus",
       "field": {
-        "label": "Funktsioon(id)"
+        "label": "Harjutuse andmed",
+        "fields": [
+          {
+            "label": "Diktaadi pealkiri",
+            "description": "Diktaadi pealkiri, mida näidatakse valikmenüüs"
+          },
+          {
+            "label": "Funktsioonid taktide kaupa",
+            "description": "Sisestage funktsioonid ( T, S, D or M) taktide kauoa. Ühes taktis võib olla mitu funktsiooni, nt TD. Suur- või väiketähed pole tähtis.",
+            "entity": "Takt",
+            "field": {
+              "label": "Funktsioon(id)"
+            }
+          },
+          {
+            "label": "Helifail"
+          },
+          {
+            "label": "Noot",
+            "description": "Soovi korral laadige üles notatsioon pildifailina (png või jpg)"
+          }
+        ]
       }
-    },
-    {
-      "label": "Audiofail"
-    },
-    {
-      "label": "Noot",
-      "description": "Soovi korral laadige üles notatsioon pildifailina (png või jpg)"
     },
     {
       "label": "UI labels",
@@ -25,7 +39,7 @@
           "default": "Kontrolli"
         },
         {
-          "default": "Sisetage funktsioonid:"
+          "default": "Sisetage funktsioonid"
         },
         {
           "default": "Õige"
@@ -35,6 +49,21 @@
         },
         {
           "default": "Audio elemendi loomine ei õnnestunud."
+        },
+        {
+          "default": "Valige diktaat"
+        },
+        {
+          "default": "Õige on: "
+        },
+        {
+          "default": "Te olete juba vastanud"
+        },
+        {
+          "default": "Eelmine"
+        },
+        {
+          "default": "Järgmine"
         }
       ]
     }

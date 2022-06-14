@@ -98,7 +98,7 @@
         "name": "correctAnswerIs",
         "type": "text",
         "default": "Correct is: "
-      }
+      },
       {
         "name": "youHaveAnswered", 
         "type": "text",
