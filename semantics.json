@@ -93,6 +93,26 @@
         "name": "selectDictation",
         "type": "text",
         "default": "Select dictation"
+      },
+      {
+        "name": "correctAnswerIs",
+        "type": "text",
+        "default": "Correct is: "
+      }
+      {
+        "name": "youHaveAnswered", 
+        "type": "text",
+        "default": "You have already answered"
+      },
+      {
+        "name": "previous", 
+        "type": "text",
+        "default": "Previous"
+      },
+      {
+        "name": "next", 
+        "type": "text",
+        "default": "Next"
       }
     ]
   }

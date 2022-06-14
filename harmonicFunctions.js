@@ -30,7 +30,11 @@ H5P.HarmonicFunctions = (function ($) {
             "correct": "Correct",
             "wrong": "Wrong",
             "couldNotCreateAudioElement": "Could not create Audio element",
-			"selectDictation": "Select dictation"
+			"selectDictation": "Select dictation",
+			"correctAnswerIs": "Correct is: ",
+			"youHaveAnswered": "You have already answered",
+			"previous": "Previous",
+			"next": "Next"
         }, options.l10n);
         
         //this.l10n = options.l10n;
@@ -169,6 +173,7 @@ H5P.HarmonicFunctions = (function ($) {
 			const $menuDiv = $("<div>", {id: "menuDiv", class: "vertical-center"});
 			const $exerciseMenu =   $('<select>', {
 				id: "exerciseSelect",
+				attr: {'aria-label': this.l10n.selectDictation},
 				class: "select",
 				change:  (event) => {
 					//console.log("option", event.target.selectedIndex, event.target);
@@ -187,6 +192,7 @@ H5P.HarmonicFunctions = (function ($) {
 					id: "backButton",
 					class: "button",
 					text: "<",
+					attr: {'aria-label': this.l10n.previous},
 					click: (event) => {
 						if (this.exerciseIndex>0) {
 							//console.log("Back");
@@ -200,6 +206,7 @@ H5P.HarmonicFunctions = (function ($) {
 				$('<button>', {
 					id: "forwardButton",
 					class: "button",
+					attr: {'aria-label': this.l10n.next},
 					text: ">",
 					click: (event) => {
 						if (this.exerciseIndex<this.exercises.length-1) {
@@ -215,7 +222,7 @@ H5P.HarmonicFunctions = (function ($) {
 
 
 		this.checkResponse = () => {
-			if (this.responded) { alert("You have already answered"); return; } // TODO: translation
+			if (this.responded) { alert(this.l10n.youHaveAnswered); return; } // TODO: translation
 
 			this.responded = true;
 			let correct = true;
@@ -229,6 +236,7 @@ H5P.HarmonicFunctions = (function ($) {
 					this.inputCells[i].addClass("greenBorder");
 				} else {
 					feedBack = this.l10n.wrong;
+					feedBack += this.l10n.correctAnswerIs + " " + functions.join(" ");
 					correct = false;
                     this.inputCells[i].val(this.inputCells[i].val() + "|" + functions[i]);
 					this.inputCells[i].addClass("redBorder");
@@ -236,10 +244,10 @@ H5P.HarmonicFunctions = (function ($) {
 			}
 
 
-			console.log(feedBack);
-			$("#feedbackDiv").html(feedBack).show();
             $("#notationImage").show();
             this.trigger("resize");
+			console.log(feedBack);
+			$("#feedbackDiv").html(feedBack).show().focus(); // focus necessary for
 		}
 
 
@@ -290,6 +298,7 @@ H5P.HarmonicFunctions = (function ($) {
 			'<br />'
 		] );
 
+		$container.append('<div id="feedbackDiv" tabindex="0"></div>'); // tabIndex for making it focusable
 
 		// Add image if provided.
 
@@ -299,10 +308,6 @@ H5P.HarmonicFunctions = (function ($) {
 			alt: "notation image",
 		}).hide();
 		$container.append($image);
-
-
-
-		$container.append('<div id="feedbackDiv"></div>');
 
 		const currentIndex =  $("#exerciseSelect")[0].selectedIndex; // not sure if this is necessary or works at all...
 		if (currentIndex>=0 ) {
