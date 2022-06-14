@@ -245,10 +245,12 @@ H5P.HarmonicFunctions = (function ($) {
 			}
 
 
-            $("#notationImage").show();
-            this.trigger("resize");
+            if (this.exercises[this.exerciseIndex].notationImage) {
+				$("#notationImage").show();
+				this.trigger("resize");
+			}
 			console.log(feedBack);
-			$("#feedbackDiv").html(feedBack).show().focus(); // focus necessary for
+			$("#feedbackDiv").html(feedBack).show().focus(); // focus necessary for screen reader support
 		}
 
 
@@ -313,19 +315,20 @@ H5P.HarmonicFunctions = (function ($) {
 
 		const euLogoPath = H5P.getLibraryPath(this.libraryInfo.versionedNameNoSpaces) + "/eu.jpg";
 		console.log("logo path:", euLogoPath);
-		const $euDiv = $('<div>', {id:"euDiv"}).html("<br /><small>" + this.l10n.euSupportText +  "</small>");
+		const $euDiv = $('<div>', {id:"euDiv"}).html("<br /><p><small>" + this.l10n.euSupportText +  "</small></p>");
 		$euDiv.append(
 			$('<img>', {
 				id: "euLogo",
 				alt: "The project is supported by EU social Fund",
 				width: "200px",
 				align: "left",
-				src: euLogoPath
+				src: euLogoPath,
+				load: () => this.trigger("resize")
 			})
-		)
+		);
 
 		$container.append($euDiv);
-		H5P.trigger("resize");
+
 
 		const currentIndex =  $("#exerciseSelect")[0].selectedIndex; // not sure if this is necessary or works at all...
 		if (currentIndex>=0 ) {
