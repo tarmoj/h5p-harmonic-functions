@@ -34,7 +34,7 @@ Kuidas teha tagasiside (kui vale, siis näita, mis oli õige? - vbolla: kui vale
 -----
 
 pack (from parent directory)
- h5p pack H5P.DegreeDictations DegreeDictations.h5p
+ h5p pack H5P.HarmonicFunctions HarmonicFunctions-1.1.h5p
 
 language file:
 library kataloogis:
