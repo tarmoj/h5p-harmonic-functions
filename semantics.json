@@ -1,5 +1,13 @@
 [
   {
+    "label": "Disclaimer",
+    "name": "disclaimer",
+    "type": "text",
+    "optional":"true",
+    "default": "This is not an official H5P.org content type. With any problems please turn to the author tarmo.johannes@muba.edu.ee ",
+    "description": "NB!"
+  },
+  {
 
     "name": "exercises",
     "type": "list",
@@ -118,6 +126,11 @@
         "name": "euSupportText", 
         "type": "text",
         "default": "The project is supported by European Social Fund"
+      },
+      {
+        "name": "disclaimerText",
+        "type": "text",
+        "default": "NB! This is not an official H5P.org content type. With any problems please turn to the author tarmo.johannes@muba.edu.ee "
       }
     ]
   }

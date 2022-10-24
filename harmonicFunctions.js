@@ -35,7 +35,8 @@ H5P.HarmonicFunctions = (function ($) {
 			"youHaveAnswered": "You have already answered",
 			"previous": "Previous",
 			"next": "Next",
-			"this.l10n.euSupportText": "The project is supported by European Social Fund"
+			"euSupportText": "The project is supported by European Social Fund",
+			"disclaimerText": "This is not an official H5P.org content type. With any problems please turn to the author tarmo.johannes@muba.edu.ee "
         }, options.l10n);
         
         //this.l10n = options.l10n;
@@ -312,6 +313,9 @@ H5P.HarmonicFunctions = (function ($) {
 		}).hide();
 		$container.append($image);
 
+
+		const $disclaimerDiv = $('<div>', {id:"disclaimerDiv"}).html("<br /><small>" + this.l10n.disclaimerText +  "</small>");
+		$container.append($disclaimerDiv);
 
 		const euLogoPath = H5P.getLibraryPath(this.libraryInfo.versionedNameNoSpaces) + "/eu.jpg";
 		console.log("logo path:", euLogoPath);

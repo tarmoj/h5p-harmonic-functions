@@ -1,6 +1,12 @@
 {
   "semantics": [
     {
+      "label": "Märguanne",
+      "optional":"true",
+      "default": "See ei ole ametlik H5P.org sisutüüp. Porbleemide korral pöörduge autori poole: tarmo.johannes@muba.edu.ee ",
+      "description": "NB!"
+    },
+    {
       "label": "Funktsiooniharjutused",
       "description": "Defineerige funktsiooniharjutused (max 100)",
       "entity": "Harjutus",
@@ -67,6 +73,9 @@
         },
         {
           "default": "Projekti toetab Euroopa Sotsiaalfond"
+        },
+        {
+          "default": "NB! See ei ole ametlik H5P.org sisutüüp. Porbleemide korral pöörduge autori poole: tarmo.johannes@muba.edu.ee"
         }
       ]
     }
