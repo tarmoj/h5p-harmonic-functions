@@ -3,7 +3,7 @@
   "description": "Recognize harmonic functions (T, D, S, M) in the music",
   "majorVersion": 1,
   "minorVersion": 1,
-  "patchVersion": 1,
+  "patchVersion": 2,
   "runnable": 1, 
   "author": "Tarmo Johannes",
   "license": "MIT",
