@@ -1,0 +1,82 @@
+{
+  "semantics": [
+    {
+      "label": "Disclaimer",
+      "default": "This is not an official H5P.org content type. With any problems please turn to the author tarmo.johannes@muba.edu.ee ",
+      "description": "NB!"
+    },
+    {
+      "label": "Harmonic function exercises",
+      "description": "Define harmonic function exercises (max 100)",
+      "entity": "Exercise",
+      "field": {
+        "label": "Exercise data",
+        "fields": [
+          {
+            "label": "(Sub)title of the exercise",
+            "description": "(Sub)title of the exercise shown in dropdown menu"
+          },
+          {
+            "label": "Functions by measures",
+            "description": "Enter functions ( T, S, D or M) by measures. One bar may have several functions like TD. Upper/lower case does not matter.",
+            "entity": "Measure",
+            "field": {
+              "label": "Function(s)"
+            }
+          },
+          {
+            "label": "Audio file"
+          },
+          {
+            "label": "Notation",
+            "description": "Notation (png or jpg)"
+          }
+        ]
+      }
+    },
+    {
+      "label": "UI labels",
+      "fields": [
+        {
+          "default": "Enter the harmonic functions of the musical excerpt -  T, S, D or M (tonic, subdominant, dominant or mediant)"
+        },
+        {
+          "default": "Check"
+        },
+        {
+          "default": "Enter functions"
+        },
+        {
+          "default": "Correct"
+        },
+        {
+          "default": "Wrong"
+        },
+        {
+          "default": "Could not create audio element"
+        },
+        {
+          "default": "Select dictation"
+        },
+        {
+          "default": "Correct is: "
+        },
+        {
+          "default": "You have already answered"
+        },
+        {
+          "default": "Previous"
+        },
+        {
+          "default": "Next"
+        },
+        {
+          "default": "The project is supported by European Social Fund"
+        },
+        {
+          "default": "NB! This is not an official H5P.org content type. With any problems please turn to the author tarmo.johannes@muba.edu.ee "
+        }
+      ]
+    }
+  ]
+}
