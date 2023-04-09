@@ -1,35 +1,35 @@
 {
   "semantics": [
     {
-      "label": "Disclaimer",
-      "default": "This is not an official H5P.org content type. With any problems please turn to the author tarmo.johannes@muba.edu.ee ",
-      "description": "NB!"
+      "label": "Уведомление",
+      "default": "Это не официальный тип контента H5P.org. С любыми проблемами обращайтесь к автору tarmo.johannes@muba.edu.ee ",
+      "description": "Внимание!"
     },
     {
-      "label": "Harmonic function exercises",
-      "description": "Define harmonic function exercises (max 100)",
-      "entity": "Exercise",
+      "label": "Упражнение гармонических функций",
+      "description": "Составить упражнения гармонических функций (макс. 100)",
+      "entity": "Упражнение",
       "field": {
-        "label": "Exercise data",
+        "label": "Данные упражнения",
         "fields": [
           {
-            "label": "(Sub)title of the exercise",
-            "description": "(Sub)title of the exercise shown in dropdown menu"
+            "label": "Подзаголовок упражнения",
+            "description": "Подзаголовок упражнения, показанного в выпадающем меню"
           },
           {
-            "label": "Functions by measures",
-            "description": "Enter functions ( T, S, D or M) by measures. One bar may have several functions like TD. Upper/lower case does not matter.",
-            "entity": "Measure",
+            "label": "Функции по тактам",
+            "description": "Введите функции ( T, S, D или M) по тактам. В одном такте может быть несколько функций (например ТD). Заглавная или маленькая буква - не имеет значения.",
+            "entity": "Такт",
             "field": {
-              "label": "Function(s)"
+              "label": "Функция (функции)"
             }
           },
           {
-            "label": "Audio file"
+            "label": "Аудиофайл"
           },
           {
-            "label": "Notation",
-            "description": "Notation (png or jpg)"
+            "label": "Ноты",
+            "description": "Ноты (png или jpg)"
           }
         ]
       }
@@ -38,40 +38,40 @@
       "label": "UI labels",
       "fields": [
         {
-          "default": "Enter the harmonic functions of the musical excerpt -  T, S, D or M (tonic, subdominant, dominant or mediant)"
+          "default": "Введите гармонические функции отрывка -  T, S, D или M (тоника, субдоминанта, доминанта или медианта)"
         },
         {
-          "default": "Check"
+          "default": "Проверить"
         },
         {
-          "default": "Enter functions"
+          "default": "Введите функции"
         },
         {
-          "default": "Correct"
+          "default": "Правильно"
         },
         {
-          "default": "Wrong"
+          "default": "Неправильно"
         },
         {
-          "default": "Could not create audio element"
+          "default": "Создание аудио не удалось"
         },
         {
-          "default": "Select dictation"
+          "default": "Выберите упражнение"
         },
         {
-          "default": "Correct is: "
+          "default": "Верный ответ: "
         },
         {
-          "default": "You have already answered"
+          "default": "Вы уже ответили"
         },
         {
-          "default": "Previous"
+          "default": "Предыдущий"
         },
         {
-          "default": "Next"
+          "default": "Следующий"
         },
         {
-          "default": "The project is supported by European Social Fund"
+          "default": "Проект поддерживается Европейским социальным фондом"
         },
         {
           "default": "NB! This is not an official H5P.org content type. With any problems please turn to the author tarmo.johannes@muba.edu.ee "
