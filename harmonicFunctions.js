@@ -228,23 +228,25 @@ H5P.HarmonicFunctions = (function ($) {
 
 			this.responded = true;
 			let correct = true;
-			let feedBack = "";
+			//let feedBack = "";
 			const functions =  this.functionArray.flat(); //this.exercises[this.exerciseIndex].functions;
 			for (let i=0; i<functions.length; i++) {
 				const response = this.inputCells[i].val().toLowerCase();
 				console.log("response: ", i, this.inputCells[i].val() );
 				if (functions[i].toLowerCase() === response) {
-					feedBack = this.l10n.correct;
+					//feedBack = this.l10n.correct;
 					this.inputCells[i].addClass("greenBorder");
+					correct &&= true;
 				} else {
-					feedBack = this.l10n.wrong + "! ";
-					feedBack += this.l10n.correctAnswerIs + " " + functions.join(" ");
+					//feedBack = this.l10n.wrong + "! ";
+					//feedBack += this.l10n.correctAnswerIs + " " + functions.join(" ");
 					correct = false;
                     this.inputCells[i].val(this.inputCells[i].val() + "|" + functions[i]);
 					this.inputCells[i].addClass("redBorder");
 				}
 			}
 
+			const feedBack = correct ?  this.l10n.correct : this.l10n.wrong + "! " + this.l10n.correctAnswerIs + " " + functions.join(" ");
 
             if (this.exercises[this.exerciseIndex].notationImage) {
 				$("#notationImage").show();
