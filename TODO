@@ -37,6 +37,9 @@ Kuidas teha tagasiside (kui vale, siis näita, mis oli õige? - vbolla: kui vale
 
 pack (from parent directory)
  h5p pack H5P.HarmonicFunctions HarmonicFunctions-1.1.h5p
+ subfolders:
+ h5p pack h5p-harmonic-functions HarmonicFunctions-1.1.4.h5p
+
 
 language file:
 library kataloogis:
