@@ -15,7 +15,7 @@ H5P.HarmonicFunctions = (function ($) {
 
 		// now exercises is a list from version 1.1.0
 		this.exercises = options.exercises;
-		console.log("Nunmber of exercises: ", this.exercises.length);
+		//console.log("Nunmber of exercises: ", this.exercises.length);
 		if (this.exercises.length ==0 ) {alert("No exercises defined"); return; }
 
 		// Keep provided id.
@@ -100,17 +100,17 @@ H5P.HarmonicFunctions = (function ($) {
 				}
 				functionArray.push(barArray);
 			}
-			console.log("FunctionArray: ", functionArray);
+			// console.log("FunctionArray: ", functionArray);
 			return functionArray;
 		}
 
 		this.createInputCells = () =>  {
 
-			console.log("createInputCells", this);
+			// console.log("createInputCells", this);
 
 			this.inputCells = []; // clear
 			const functionCount = this.functionArray.flat().length;
-			console.log("functions found:", functionCount);
+			// console.log("functions found:", functionCount);
 
 			//const functions = this.exercises[this.exerciseIndex].functions;
 
@@ -180,12 +180,12 @@ H5P.HarmonicFunctions = (function ($) {
 				change:  (event) => {
 					//console.log("option", event.target.selectedIndex, event.target);
 					const exerciseIndex = event.target.selectedIndex; //parseInt(event.target.value);
-					console.log("Change", exerciseIndex);
+					// console.log("Change", exerciseIndex);
 					this.loadExercise(exerciseIndex);
 				}
 			}) ;
 			for (let i= 0; i<this.exercises.length; i++) {
-				console.log("Adding exercise to menu: ", this.exercises[i].title)
+				//console.log("Adding exercise to menu: ", this.exercises[i].title)
 				$exerciseMenu.append( $('<option>').text(this.exercises[i].title).val(i) );
 			}
 			$menuDiv.append([
@@ -296,7 +296,7 @@ H5P.HarmonicFunctions = (function ($) {
 			$('<button/>', {
 				text: this.l10n.check,
 				id: 'checkButton',
-				class: 'button',
+				class: 'top-margin h5p-joubelui-button',
 				click:  ()  => {
 					self.checkResponse();
 				}
@@ -319,21 +319,21 @@ H5P.HarmonicFunctions = (function ($) {
 		const $disclaimerDiv = $('<div>', {id:"disclaimerDiv"}).html("<br /><small>" + this.l10n.disclaimerText +  "</small>");
 		$container.append($disclaimerDiv);
 
-		const euLogoPath = H5P.getLibraryPath(this.libraryInfo.versionedNameNoSpaces) + "/eu.jpg";
-		console.log("logo path:", euLogoPath);
-		const $euDiv = $('<div>', {id:"euDiv"}).html("<br /><p><small>" + this.l10n.euSupportText +  "</small></p>");
-		$euDiv.append(
-			$('<img>', {
-				id: "euLogo",
-				alt: "The project is supported by EU social Fund",
-				width: "200px",
-				align: "left",
-				src: euLogoPath,
-				load: () => this.trigger("resize")
-			})
-		);
-
-		$container.append($euDiv);
+		// const euLogoPath = H5P.getLibraryPath(this.libraryInfo.versionedNameNoSpaces) + "/eu.jpg";
+		// console.log("logo path:", euLogoPath);
+		// const $euDiv = $('<div>', {id:"euDiv"}).html("<br /><p><small>" + this.l10n.euSupportText +  "</small></p>");
+		// $euDiv.append(
+		// 	$('<img>', {
+		// 		id: "euLogo",
+		// 		alt: "The project is supported by EU social Fund",
+		// 		width: "200px",
+		// 		align: "left",
+		// 		src: euLogoPath,
+		// 		load: () => this.trigger("resize")
+		// 	})
+		// );
+		//
+		// $container.append($euDiv);
 
 
 		const currentIndex =  $("#exerciseSelect")[0].selectedIndex; // not sure if this is necessary or works at all...

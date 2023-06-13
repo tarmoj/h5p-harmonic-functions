@@ -3,7 +3,7 @@
   "description": "Recognize harmonic functions (T, D, S, M) in the music",
   "majorVersion": 1,
   "minorVersion": 1,
-  "patchVersion": 4,
+  "patchVersion": 5,
   "runnable": 1, 
   "author": "Tarmo Johannes",
   "license": "MIT",
@@ -19,6 +19,9 @@
   "preloadedCss": [
     {
       "path": "harmonicFunctions.css"
+    },
+    {
+      "path": "joubel-ui.css"
     }
   ]
 }
